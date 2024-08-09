@@ -3,16 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title th:text="${title}"> Details</title>
+    <title th:text="${title}"></title>
 </head>
 <body>
-    <h1 th:text="${title}"></h1>
-
     <ul>
         <li th:text="${user.nombre}"></li>
         <li th:text="${user.apellido}"></li>
         <li th:if="${user.email}" th:text="${user.email}"></li>
-        <li th:if="${user.email == null}" th:text="${'el usuario no tieneemail'}"></li>
-    </ul>
+        <li th:if="${user.email == null}" th:text="${'el usuario no tiene email'}"></li>
+    </ul> 
 </body>
 </html>
