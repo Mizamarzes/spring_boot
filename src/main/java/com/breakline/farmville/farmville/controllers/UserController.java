@@ -1,6 +1,5 @@
 package com.breakline.farmville.farmville.controllers;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -8,7 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.breakline.farmville.farmville.models.User;
 
@@ -53,7 +53,22 @@ public class UserController {
     //     return users;
     // }
 
-        
-        
+    // ---------------------------------------
+
+    @GetMapping("/form")
+    public String showForm(Model model) {
+        model.addAttribute("user", new User());
+        return "form";
+    }
+
+    @PostMapping("/form")
+    public String submitUser(@RequestParam String nombre, 
+                             @RequestParam String apellido, 
+                             @RequestParam(required = false) String email, 
+                             Model model) {
+        User user = new User(nombre, apellido, email);
+        model.addAttribute("user", user);
+        return "form";
+    }
 
 }
